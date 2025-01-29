@@ -111,6 +111,7 @@ export const DATA = {
       href: "#",
       degree: "Science physique",
       logoUrl: "",
+      start: undefined,
       end: "2019",
     },
   ],
