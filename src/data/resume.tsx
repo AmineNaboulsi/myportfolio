@@ -171,6 +171,112 @@ export const DATA = {
         "",
     },
     {
+      title: "Black Pink Songs",
+      href: "#",
+      dates: "(1 month et une semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "Android",
+        "Java",
+        "Firebase",
+        "Php",
+        "Mysql",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/adoptation",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/blackpinksongs.png",
+      video:
+        "",
+    },
+    {
+      title: "XO",
+      href: "#",
+      dates: "(2 semaine )",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "Android",
+        "Java",
+        "Firebase",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/adoptation",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/xo.png",
+      video:
+        "",
+    },
+    {
+      title: "Youtube Converter",
+      href: "#",
+      dates: "(3 semaine )",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "React Js",
+        "MongoDB",
+        "Node Js",
+        "Express",
+        "MERNE",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://jazzy-llama-a2f52f.netlify.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/M-Tijani/Youtube_Downloader",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/yc.mp4",
+    },
+    {
+      title: "Caffe Platform",
+      href: "https://aminenaboulsi.github.io/Bref2/",
+      dates: "(5 jour)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "HTML",
+        "CSS",
+        "Javascript",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://aminenaboulsi.github.io/Bref2/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/caffe",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/caffe.png",
+      video:
+        "",
+    },
+    {
       title: "SnackApp",
       href: "#",
       dates: "(1 month)",
@@ -287,6 +393,34 @@ export const DATA = {
         "",
     },
     {
+      title: "Amine Air",
+      href: "https://amine-air.vercel.app/",
+      dates: "(2 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "NextJs",
+        "Tailwind",
+        "Typescript",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://amine-air.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/AmineAir",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/amineair.png",
+      video:
+        "",
+    },
+    {
       title: "Amine Fc",
       href: "https://aminenaboulsi.github.io/Fc/",
       dates: "(2 semaine)",
@@ -314,7 +448,7 @@ export const DATA = {
       video:
         "/fc.mp4",
     },
-   
+  
   ],
   hackathons: [
     {
