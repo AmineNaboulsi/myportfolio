@@ -70,7 +70,7 @@ export const DATA = {
         "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
     },
     {
-      company: "Capgemini",
+      company: "Capgemini Engineering",
       badges: [],
       href: "https://shopify.com",
       location: "Remote",
@@ -269,6 +269,31 @@ export const DATA = {
         {
           type: "Source",
           href: "https://github.com/AmineNaboulsi/caffe",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/caffe.png",
+      video:
+        "",
+    },
+    {
+      title: "Mail Sender",
+      href: "#",
+      dates: "(2 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "C#",
+        "Windows Forms",
+        "Bufinu ui",
+        "Guna ui",
+        "SMTP -p",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/Sender_mails",
           icon: <Icons.github className="size-3" />,
         },
       ],
