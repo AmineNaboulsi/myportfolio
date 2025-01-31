@@ -67,7 +67,7 @@ export const DATA = {
       logoUrl: "https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1746057600&v=beta&t=UhYffx0nIeZqy2mYFBUqtSo5nJN81BrhN99mWykUeLE",
       start: "3 mois",
       description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+        "Mon stage chez ABA Technology s'est concentré sur le développement d'un système intelligent de classification des images de cancer de la peau en utilisant des techniques avancées d'intelligence artificielle. À travers l'entraînement de réseaux de neurones convolutifs (CNN) sur un ensemble de données dermatologiques annotées, j'ai pu concevoir un modèle capable d'identifier différents types de lésions cutanées avec une précision optimisée grâce à l'algorithme Adam et des techniques de prétraitement d'images. En complément, j'ai développé une interface utilisateur avec Gradio pour une utilisation intuitive du modèle et intégré un bot sur Discord permettant une prédiction interactive des images. Mon travail a permis d'améliorer la précision diagnostique et ouvre des perspectives d'évolution vers une meilleure assistance aux professionnels de santé, notamment en explorant d'autres types de lésions cutanées et en intégrant des techniques d'interprétabilité pour une meilleure compréhension des décisions du modèle.",
     },
     {
       company: "Capgemini Engineering",
@@ -78,7 +78,7 @@ export const DATA = {
       logoUrl: "https://www.capgemini.com/us-en/wp-content/themes/capgemini2020/assets/images/logo.svg",
       start: "2 mois",
       description:
-        "Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.",
+        "Lors de mon stage chez Capgemini, j'ai travaillé sur le développement d'une application intelligente capable de classifier les images de produits dans une grande surface en utilisant le deep learning. L'objectif était de concevoir un modèle performant basé sur des réseaux de neurones convolutifs (CNN) afin d'identifier et de catégoriser automatiquement les articles placés dans les chariots ou sur les étagères. Pour cela, j'ai collecté et prétraité un large ensemble d'images de produits, optimisé l'entraînement du modèle en ajustant ses hyperparamètres et intégré des techniques de vision par ordinateur pour améliorer la précision de la reconnaissance. L'application, déployée sur mobile, permet aux utilisateurs de scanner des produits en temps réel et d'obtenir instantanément leur classification, offrant ainsi une solution efficace pour l'automatisation des inventaires et la gestion intelligente des stocks en grande distribution.",
     }
   ],
   education: [
@@ -122,7 +122,7 @@ export const DATA = {
       dates: "(1 semaine)",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "Une plateforme de cours en ligne conçue pour offrir une expérience d’apprentissage interactive et personnalisée. L’objectif principal est de faciliter l’accès au savoir tout en garantissant une gestion efficace des contenus éducatifs.",
       technologies: [
         "React Js",
         "Typescript",
@@ -152,8 +152,7 @@ export const DATA = {
       href: "#",
       dates: "(2 semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "Android",
         "Java",
@@ -175,8 +174,7 @@ export const DATA = {
       href: "#",
       dates: "(1 month et une semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "Android",
         "Java",
@@ -200,8 +198,7 @@ export const DATA = {
       href: "#",
       dates: "(2 semaine )",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "Android",
         "Java",
@@ -223,8 +220,7 @@ export const DATA = {
       href: "#",
       dates: "(3 semaine )",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "React Js",
         "MongoDB",
@@ -253,8 +249,7 @@ export const DATA = {
       href: "https://aminenaboulsi.github.io/Bref2/",
       dates: "(5 jour)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "HTML",
         "CSS",
@@ -277,37 +272,11 @@ export const DATA = {
         "",
     },
     {
-      title: "Mail Sender",
-      href: "#",
-      dates: "(2 semaine)",
-      active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "C#",
-        "Windows Forms",
-        "Bufinu ui",
-        "Guna ui",
-        "SMTP -p",
-      ],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/AmineNaboulsi/Sender_mails",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/caffe.png",
-      video:
-        "",
-    },
-    {
       title: "SnackApp",
       href: "#",
       dates: "(1 month)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "C#",
         "WFP",
@@ -331,8 +300,7 @@ export const DATA = {
       href: "https://neo-bank-r9so.vercel.app/",
       dates: "(1 semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "React Js",
         "Redux",
@@ -363,8 +331,7 @@ export const DATA = {
       href: "https://amine-store.vercel.app/",
       dates: "(1 semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "React Js",
         "Redux",
@@ -394,8 +361,7 @@ export const DATA = {
       href: "https://minijirabref.netlify.app/",
       dates: "(1 semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "React Js",
         "Javascript",
@@ -422,8 +388,7 @@ export const DATA = {
       href: "https://amine-air.vercel.app/",
       dates: "(2 semaine)",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description:"",
       technologies: [
         "NextJs",
         "Tailwind",
@@ -451,7 +416,7 @@ export const DATA = {
       dates: "(2 semaine)",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "Une application web de gestion d'équipe Ultimate, permettant aux utilisateurs de créer, personnaliser et gérer leurs formations tactiques et équipes de joueurs via une interface interactive.",
       technologies: [
         "HTML",
         "CSS",
@@ -473,7 +438,30 @@ export const DATA = {
       video:
         "/fc.mp4",
     },
-  
+    {
+      title: "Mail Sender",
+      href: "#",
+      dates: "(2 semaine)",
+      active: true,
+      description:"",
+      technologies: [
+        "C#",
+        "Windows Forms",
+        "Bufinu ui",
+        "Guna ui",
+        "SMTP -p",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/Sender_mails",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/mailsender.png",
+      video:
+        "",
+    },
   ],
   hackathons: [
     {
