@@ -147,6 +147,173 @@ export const DATA = {
       video:
         "",
     },
+    {
+      title: "Adoptation Animal",
+      href: "#",
+      dates: "(2 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "Android",
+        "Java",
+        "Firebase"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/adoptation",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/adoptation.png",
+      video:
+        "",
+    },
+    {
+      title: "SnackApp",
+      href: "#",
+      dates: "(1 month)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "C#",
+        "WFP",
+        "XAML",
+        "Microsoft SQL SERVER",
+        "Ado.net",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/SnackApp",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/snackapp.mp4",
+    },
+    {
+      title: "NeoBank",
+      href: "https://neo-bank-r9so.vercel.app/",
+      dates: "(1 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "React Js",
+        "Redux",
+        "Typescript",
+        "MySQL",
+        "TailwindCSS",
+        "Php",
+        "Swagger",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://neo-bank-r9so.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/NeoBank",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/neobank.png",
+      video:
+        "",
+    },
+    {
+      title: "Amine Store",
+      href: "https://amine-store.vercel.app/",
+      dates: "(1 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "React Js",
+        "Redux",
+        "Typescript",
+        "MySQL",
+        "TailwindCSS",
+        "Php",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://amine-store.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/AmineStore",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/aminestore.png",
+      video:
+        "",
+    },
+    {
+      title: "ToDo List",
+      href: "https://minijirabref.netlify.app/",
+      dates: "(1 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "React Js",
+        "Javascript",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://minijirabref.netlify.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/mini-jira",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/minijira.png",
+      video:
+        "",
+    },
+    {
+      title: "Amine Fc",
+      href: "https://aminenaboulsi.github.io/Fc/",
+      dates: "(2 semaine)",
+      active: true,
+      description:
+        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      technologies: [
+        "HTML",
+        "CSS",
+        "Javascript",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://aminenaboulsi.github.io/Fc/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/Fc",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/fc.mp4",
+    },
    
   ],
   hackathons: [
