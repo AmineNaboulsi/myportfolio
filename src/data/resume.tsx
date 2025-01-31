@@ -9,7 +9,7 @@ export const DATA = {
   description:
     "Computer Engineer,Building and Sharing My Knowledge",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "I'm Amine, a passionate and innovative computer engineer based in [Agadir, Morocco](https://www.google.com/maps?sca_esv=bbddf6f6e47022e4&output=search&q=agadir+map&source=lnms&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjnSuuKZNj-6zieDk_gkn6CyymgG_tEVFNWvBwycIom9K9aY2nzCOFNekow0Bz-8LYl4Lq88gs-XwJ0JdfeMgmHNncZPxCISb_iR778mY8GlkpTrMSg_5Tg7fgRJG5XtSitIFPlye7v0dUaCwr676ck5h_0n&entry=mc&ved=1t:200715&ictx=111). With a strong foundation in full-stack development, I specialize in building scalable and efficient web and mobile and desktop applications. My expertise spans across [React, Next.js, Node.js, C#, WPF, PHP, Laravel, Docker, Java ](/#skills) and more.",
   avatarUrl: "https://media.licdn.com/dms/image/v2/D4E03AQEY55PrKlPY1g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1706394101212?e=1743638400&v=beta&t=5X2hFZXwunj8yx_30lc0qg3CF9tc3HIXXxZJvP8T8Pg",
   skills: [
     "React",
