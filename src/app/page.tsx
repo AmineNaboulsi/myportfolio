@@ -23,22 +23,10 @@ export default function Page() {
               >
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none "
+                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none ml-2"
                 yOffset={8}
-                text={`Hi, I'm `}
-              /> 
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-[#BFE241] ml-2"
-                yOffset={8}
-                text={`${DATA.name.split(" ")[0]}`}
+                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="animate-pulse text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none "
-                yOffset={8}
-                text={`👋`}
-              /> 
               </div>
               <BlurFadeText
                 className="max-w-[600px] md:text-xl text-[#999999]"
