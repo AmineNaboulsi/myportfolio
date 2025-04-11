@@ -3,14 +3,14 @@ import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Amine ",
-  initials: "DV",
-  url: "https://dillion.io",
+  initials: "AM",
+  url: "https://www.naboulsiamine.com",
   location: "Agadir, MAR",
   description:
     "Computer Engineer,Building and Sharing My Knowledge",
   summary:
     "I'm Amine, a passionate and innovative computer engineer based in [Agadir, Morocco](https://www.google.com/maps?sca_esv=bbddf6f6e47022e4&output=search&q=agadir+map&source=lnms&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjnSuuKZNj-6zieDk_gkn6CyymgG_tEVFNWvBwycIom9K9aY2nzCOFNekow0Bz-8LYl4Lq88gs-XwJ0JdfeMgmHNncZPxCISb_iR778mY8GlkpTrMSg_5Tg7fgRJG5XtSitIFPlye7v0dUaCwr676ck5h_0n&entry=mc&ved=1t:200715&ictx=111). With a strong foundation in full-stack development, I specialize in building scalable and efficient web and mobile and desktop applications. My expertise spans across [React, Next.js, Node.js, C#, WPF, PHP, Laravel, Docker, Java ](/#skills) and more.",
-  avatarUrl: "https://media.licdn.com/dms/image/v2/D4E03AQEY55PrKlPY1g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1706394101212?e=1743638400&v=beta&t=5X2hFZXwunj8yx_30lc0qg3CF9tc3HIXXxZJvP8T8Pg",
+  avatarUrl: "ME.jpeg",
   skills: [
     "React",
     "Next.js",
@@ -50,7 +50,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:naboulsiiamine@gmail.com",
         icon: Icons.email,
         navbar: true,
       },
@@ -62,7 +62,7 @@ export const DATA = {
       company: "Mediot",
       href: "https://mediot.tech/",
       badges: [],
-      location: "Remote",
+      location: "Casablanca Technopark",
       title: "Stage ",
       logoUrl: "https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1746057600&v=beta&t=UhYffx0nIeZqy2mYFBUqtSo5nJN81BrhN99mWykUeLE",
       start: "3 mois",
@@ -73,7 +73,7 @@ export const DATA = {
       company: "Capgemini Engineering",
       badges: [],
       href: "https://shopify.com",
-      location: "Remote",
+      location: "Casanearshore",
       title: "Stage",
       logoUrl: "https://www.capgemini.com/us-en/wp-content/themes/capgemini2020/assets/images/logo.svg",
       start: "2 mois",
