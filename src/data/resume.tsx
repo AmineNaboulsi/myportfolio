@@ -246,7 +246,7 @@ export const DATA = {
     },
     {
       title: "Caffe Platform",
-      href: "https://aminenaboulsi.github.io/Bref2/",
+      href: "https://aminenaboulsi.github.io/caffe/",
       dates: "(5 jour)",
       active: true,
       description:"",
