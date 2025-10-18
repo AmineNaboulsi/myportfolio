@@ -81,29 +81,32 @@ export const DATA = {
 
   work: [
      {
-        company: "Dashy",
-        href: "https://dashypay.com/",
-        badges: [],
-        location: "Casablanca Technopark",
-        title: "Full-time",
-        logoUrl: "/dashy.jpg",
-        start: "5 months",
-        positions: [
-          {
-            title: "Full-stack Developer",
-            period: "Sept. 2025 - Present · 2 months",
-            location: "Casablanca-Settat, Morocco",
-            skills: ["Devops", "Azure Cloud", "Java", "Spring Boot", "Angular" , "Microservices" , "Docker", "Kubernetes" , "CI/CD pipelines"]
-          },
-          {
-            title: "Web Development Intern",
-            period: "June 2025 - Sept. 2025 · 4 months",
-            location: "Casablanca-Settat, Morocco",
-            skills: ["Java", "Spring Boot", "Microservices", "Angular"]
-          }
-        ]
+    company: "Dashy",
+    href: "https://dashypay.com/",
+    badges: [],
+    location: "Casablanca Technopark",
+    title: "Full-time",
+    logoUrl: "/dashy.jpg",
+    start: "5 months",
+    positions: [
+      {
+        title: "Full-stack Developer",
+        period: "Sept. 2025 - Present · 2 months",
+        location: "Casablanca-Settat, Morocco",
+        skills: ["Devops", "Azure Cloud", "Java", "Spring Boot", "Angular", "Microservices", "Docker", "Kubernetes", "CI/CD pipelines"],
+        images: ["/dashypay_cover.jpg"],
+        description: "Working on microservices architecture and cloud deployment..."
       },
-    {
+      {
+        title: "Web Development Intern",
+        period: "June 2025 - Sept. 2025 · 4 months",
+        location: "Casablanca-Settat, Morocco",
+        skills: ["Java", "Spring Boot", "Microservices", "Angular"],
+        images: ["/blackpinksongs.png"]
+      }
+    ]
+  },
+     {
       company: "Mediot",
       href: "https://mediot.tech/",
       badges: [],
@@ -112,8 +115,8 @@ export const DATA = {
       logoUrl: "/mediot_img.jpg",
       start: "3 months",
       positions: [],
-      description:
-        "My internship at ABA Technology focused on developing an intelligent classification system for skin cancer images using advanced artificial intelligence techniques. Through training convolutional neural networks (CNN) on an annotated dermatological dataset, I designed a model capable of identifying different types of skin lesions with optimized accuracy using the Adam algorithm and image preprocessing techniques. Additionally, I developed a user interface with Gradio for intuitive model usage and integrated a Discord bot enabling interactive image prediction. My work improved diagnostic accuracy and opens up perspectives for better assistance to healthcare professionals, particularly by exploring other types of skin lesions and integrating interpretability techniques for better understanding of the model's decisions.",
+      description: "My internship at ABA Technology focused on developing an intelligent classification system for skin cancer images using advanced artificial intelligence techniques. Through training convolutional neural networks (CNN) on an annotated dermatological dataset, I designed a model capable of identifying different types of skin lesions with optimized accuracy using the Adam algorithm and image preprocessing techniques. Additionally, I developed a user interface with Gradio for intuitive model usage and integrated a Discord bot enabling interactive image prediction. My work improved diagnostic accuracy and opens up perspectives for better assistance to healthcare professionals, particularly by exploring other types of skin lesions and integrating interpretability techniques for better understanding of the model's decisions.",
+      detailsUrl: "https://github.com/yourusername/mediot-project"
     },
     {
       company: "Capgemini Engineering",
@@ -123,8 +126,7 @@ export const DATA = {
       title: "Internship",
       logoUrl: "https://www.capgemini.com/us-en/wp-content/themes/capgemini2020/assets/images/logo.svg",
       start: "2 months",
-      description:
-        "During my internship at Capgemini, I worked on developing an intelligent application capable of classifying product images in a supermarket using deep learning. The objective was to design a high-performance model based on convolutional neural networks (CNN) to automatically identify and categorize items placed in shopping carts or on shelves. To achieve this, I collected and preprocessed a large set of product images, optimized model training by adjusting hyperparameters, and integrated computer vision techniques to improve recognition accuracy. The application, deployed on mobile, allows users to scan products in real-time and instantly obtain their classification, providing an effective solution for inventory automation and intelligent stock management in retail.",
+      description: "During my internship at Capgemini, I worked on developing an intelligent application capable of classifying product images in a supermarket using deep learning. The objective was to design a high-performance model based on convolutional neural networks (CNN) to automatically identify and categorize items placed in shopping carts or on shelves. To achieve this, I collected and preprocessed a large set of product images, optimized model training by adjusting hyperparameters, and integrated computer vision techniques to improve recognition accuracy. The application, deployed on mobile, allows users to scan products in real-time and instantly obtain their classification, providing an effective solution for inventory automation and intelligent stock management in retail.",
     }
   ],
   education: [
@@ -134,7 +136,7 @@ export const DATA = {
       degree: "Full Stack Developer",
       logoUrl: "/youcode.jpeg",
       start: "2024",
-      end: "in progress",
+      end: "2025",
     },
     {
       school: "Faculté Polydisciplinaire de Taroudant",
@@ -157,7 +159,7 @@ export const DATA = {
       href: "#",
       degree: "Physical Science",
       logoUrl: "",
-      start: undefined,
+      start: "2018",
       end: "2019",
     },
   ],

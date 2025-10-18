@@ -4,13 +4,34 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
-import Link from "next/link";
 import Markdown from "react-markdown";
-import { Analytics } from "@vercel/analytics/next"
+import { SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import { FaJava, FaAngular, FaDocker } from 'react-icons/fa';
+import { VscAzureDevops } from 'react-icons/vsc';
+import { TbBrandCSharp } from 'react-icons/tb';
+import { LogoLoop } from "@/components/rb/LogoLoop/LogoLoop";
 
 const BLUR_FADE_DELAY = 0.04;
+
+const techLogos = [
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <FaJava />, title: "Java", href: "https://www.java.com" },
+  { node: <FaAngular />, title: "Angular", href: "https://angular.io" },
+  { node: <VscAzureDevops />, title: "Azure DevOps", href: "https://dev.azure.com" },
+  { node: <TbBrandCSharp />, title: "C#", href: "https://learn.microsoft.com/dotnet/csharp/" },
+  { node: <FaDocker />, title: "Docker", href: "https://www.docker.com" },
+];
+
+// Alternative with image sources
+const imageLogos = [
+  { src: "/logos/company1.png", alt: "Company 1", href: "https://company1.com" },
+  { src: "/logos/company2.png", alt: "Company 2", href: "https://company2.com" },
+  { src: "/logos/company3.png", alt: "Company 3", href: "https://company3.com" },
+];
+
 
 export default function Page() {
   return (
@@ -63,13 +84,24 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold text-[#BFE241]">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
+          {/* <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
               <BlurFade  key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
                 <Badge className="px-2 py-1" key={skill}>{skill}</Badge>
               </BlurFade>
             ))}
-          </div>
+          </div> */}
+      <LogoLoop
+        logos={techLogos}
+        speed={120}
+        direction="left"
+        logoHeight={48}
+        gap={40}
+        pauseOnHover
+        scaleOnHover
+        fadeOut={false}
+        ariaLabel="Technology partners"
+      />
         </div>
       </section>
      <section id="work">
