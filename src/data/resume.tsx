@@ -164,6 +164,43 @@ export const DATA = {
     },
   ],
   projects: [
+     {
+      title: "RepasSuivi",
+      href: "https://amine-store.vercel.app/",
+      dates: "(3 week)",
+      active: true,
+      description: "RepasSuivi food tracking application that helps users monitor their daily nutrition and dietary habits.",
+      technologies: [
+        "Lumen",
+        "laravel",
+        "express.js",
+        "NodeJs",
+        "Consul",
+        "redis",
+        "rabbitMQ",
+        "Docker",
+        "PostgreSQL",
+        "microservices",
+        "NextJs",
+        "Typescript",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://repas-suivi.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/RepasSuivi-backend-microservices-php-javascript.git",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/repasSuivi.png",
+      video:
+        "",
+    },
     {
       title: "You Learn",
       href: "https://youlearn-seven.vercel.app",
@@ -342,67 +379,6 @@ export const DATA = {
       image: "",
       video:
         "/snackapp.mp4",
-    },
-    {
-      title: "NeoBank",
-      href: "https://neo-bank-r9so.vercel.app/",
-      dates: "(1 week)",
-      active: true,
-      description: "A modern banking application interface with account management, transaction tracking, and financial analytics features.",
-      technologies: [
-        "React Js",
-        "Redux",
-        "Typescript",
-        "MySQL",
-        "TailwindCSS",
-        "Php",
-        "Swagger",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://neo-bank-r9so.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/AmineNaboulsi/NeoBank",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/neobank.png",
-      video:
-        "",
-    },
-    {
-      title: "Amine Store",
-      href: "https://amine-store.vercel.app/",
-      dates: "(1 week)",
-      active: true,
-      description: "An e-commerce platform with product catalog, shopping cart, and checkout functionality.",
-      technologies: [
-        "React Js",
-        "Redux",
-        "Typescript",
-        "MySQL",
-        "TailwindCSS",
-        "Php",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://amine-store.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/AmineNaboulsi/AmineStore",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/aminestore.png",
-      video:
-        "",
     },
     {
       title: "ToDo List",
