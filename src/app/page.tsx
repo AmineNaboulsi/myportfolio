@@ -91,17 +91,19 @@ export default function Page() {
               </BlurFade>
             ))}
           </div> */}
-      <LogoLoop
-        logos={techLogos}
-        speed={120}
-        direction="left"
-        logoHeight={48}
-        gap={40}
-        pauseOnHover
-        scaleOnHover
-        fadeOut={false}
-        ariaLabel="Technology partners"
-      />
+      <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <LogoLoop
+              logos={techLogos}
+              speed={120}
+              direction="left"
+              logoHeight={48}
+              gap={40}
+              pauseOnHover
+              scaleOnHover
+              fadeOut={false}
+              ariaLabel="Technology partners"
+            />
+          </BlurFade>
         </div>
       </section>
      <section id="work">

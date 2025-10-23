@@ -166,8 +166,8 @@ export const DATA = {
   projects: [
      {
       title: "RepasSuivi",
-      href: "https://amine-store.vercel.app/",
-      dates: "(3 week)",
+      href: "https://repas-suivi.vercel.app/",
+      dates: "(4 week)",
       active: true,
       description: "RepasSuivi food tracking application that helps users monitor their daily nutrition and dietary habits.",
       technologies: [
