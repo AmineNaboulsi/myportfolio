@@ -1,6 +1,14 @@
 'use client';
 
-import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import {
+  ElementType,
+  useEffect,
+  useRef,
+  useState,
+  createElement,
+  useMemo,
+  useCallback
+} from 'react';
 import { gsap } from 'gsap';
 import './TextType.css';
 
@@ -51,10 +59,14 @@ const TextType = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
+
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
-  const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
+  const textArray = useMemo(
+    () => (Array.isArray(text) ? text : [text]),
+    [text]
+  );
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
@@ -67,6 +79,7 @@ const TextType = ({
     return textColors[currentTextIndex % textColors.length];
   };
 
+  // Start when visible
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
 
@@ -85,6 +98,7 @@ const TextType = ({
     return () => observer.disconnect();
   }, [startOnVisible]);
 
+  // Cursor blinking animation
   useEffect(() => {
     if (showCursor && cursorRef.current) {
       gsap.set(cursorRef.current, { opacity: 1 });
@@ -98,29 +112,31 @@ const TextType = ({
     }
   }, [showCursor, cursorBlinkDuration]);
 
+  // Typing logic
   useEffect(() => {
     if (!isVisible) return;
 
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     const currentText = textArray[currentTextIndex];
-    const processedText = reverseMode ? currentText.split('').reverse().join('') : currentText;
+    const processedText = reverseMode
+      ? currentText.split('').reverse().join('')
+      : currentText;
 
     const executeTypingAnimation = () => {
       if (isDeleting) {
         if (displayedText === '') {
           setIsDeleting(false);
-          if (currentTextIndex === textArray.length - 1 && !loop) {
-            return;
-          }
 
-          if (onSentenceComplete) {
-            onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
-          }
+          if (currentTextIndex === textArray.length - 1 && !loop) return;
+
+          onSentenceComplete?.(
+            textArray[currentTextIndex],
+            currentTextIndex
+          );
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -128,13 +144,10 @@ const TextType = ({
         }
       } else {
         if (currentCharIndex < processedText.length) {
-          timeout = setTimeout(
-            () => {
-              setDisplayedText(prev => prev + processedText[currentCharIndex]);
-              setCurrentCharIndex(prev => prev + 1);
-            },
-            variableSpeed ? getRandomSpeed() : typingSpeed
-          );
+          timeout = setTimeout(() => {
+            setDisplayedText(prev => prev + processedText[currentCharIndex]);
+            setCurrentCharIndex(prev => prev + 1);
+          }, variableSpeed ? getRandomSpeed() : typingSpeed);
         } else if (textArray.length > 1) {
           timeout = setTimeout(() => {
             setIsDeleting(true);
@@ -164,11 +177,13 @@ const TextType = ({
     isVisible,
     reverseMode,
     variableSpeed,
-    onSentenceComplete
+    onSentenceComplete,
+    getRandomSpeed
   ]);
 
   const shouldHideCursor =
-    hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
+    hideCursorWhileTyping &&
+    (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 
   return createElement(
     Component,
@@ -179,7 +194,10 @@ const TextType = ({
     },
     createElement(
       'span',
-      { className: 'text-type__content', style: { color: getCurrentTextColor() } },
+      {
+        className: 'text-type__content',
+        style: { color: getCurrentTextColor() }
+      },
       displayedText
     ),
     showCursor &&
@@ -187,7 +205,9 @@ const TextType = ({
         'span',
         {
           ref: cursorRef,
-          className: `text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`
+          className: `text-type__cursor ${cursorClassName} ${
+            shouldHideCursor ? 'text-type__cursor--hidden' : ''
+          }`
         },
         cursorCharacter
       )
