@@ -89,22 +89,22 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
             </blockquote>
           );
         },
-        img({ src, alt, ...props }) {
+        img({ src, alt }) {
           return (
-            <div className="my-6 rounded-lg overflow-hidden">
+            <span className="block my-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src={src} 
-                alt={alt} 
+                alt={alt || ""} 
                 className="w-full h-auto object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 loading="lazy"
-                {...props}
               />
               {alt && (
-                <p className="text-sm text-muted-foreground text-center mt-2 italic">
+                <span className="block text-sm text-muted-foreground text-center mt-2 italic">
                   {alt}
-                </p>
+                </span>
               )}
-            </div>
+            </span>
           );
         },
       }}

@@ -17,16 +17,12 @@ featured: true
 - Google Play Developer Account
 - Google Cloud Service Account for Play Store
 
-![CI/CD Pipeline Architecture](/blog/cicd-pipeline-architecture.png "CI/CD Pipeline for Flutter Apps")
-
 # Setup Fastlane for Flutter
 
 First we need to install fastlane on our machine, This action required ruby to be installed on your machine.
 Well, I'm not going to cover how to install ruby on your machine, but you can find a guide [here](https://www.ruby-lang.org/en/documentation/installation/).
 The fastlane this the one that will be used to communicate with the Google Play Store Based on a service account.
 See dox [here](https://docs.fastlane.tools/getting-started/ios/setup/#installing-fastlane).
-
-![Fastlane Setup Guide](/blog/fastlane-setup.png "Fastlane Configuration")
 
 Edit your Fastlane configuration file `android/fastlane/Fastfile` to include the following lane for deploying to the Play Store:
 
