@@ -9,14 +9,6 @@ image: "/blog/cicd-flutter.png"
 featured: true
 ---
 
-# required Tools
-
-- Gitlab Account
-- Fastlane
-- Flutter Project
-- Google Play Developer Account
-- Google Cloud Service Account for Play Store
-
 # Setup Fastlane for Flutter
 
 First we need to install fastlane on our machine, This action required ruby to be installed on your machine.
@@ -24,54 +16,6 @@ Well, I'm not going to cover how to install ruby on your machine, but you can fi
 The fastlane this the one that will be used to communicate with the Google Play Store Based on a service account.
 See dox [here](https://docs.fastlane.tools/getting-started/ios/setup/#installing-fastlane).
 
-Edit your Fastlane configuration file `android/fastlane/Fastfile` to include the following lane for deploying to the Play Store:
-
-```ruby
-platform :android do
-  desc "Deploy to Google Play Internal Testing"
-  lane :playstore_internal_release do
-    upload_to_play_store(
-      track: 'internal',
-      release_status: 'completed',
-      aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key: 'service-account.json',
-      package_name: 'com.example.appname',
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true
-    )
-  end
-
-  desc "Deploy to Google Play Closed Testing"
-  lane :playstore_closed_test_release do
-    upload_to_play_store(
-      track: 'alpha',
-      release_status: 'completed',
-      aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key: 'service-account.json',
-      package_name: 'com.example.appname',
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true
-    )
-  end
-
-  lane :tests do
-    gradle(task: "test")
-  end
-
-end
-```
-
-## Account service from Google cloud
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project or select an existing one.
-3. Navigate to "IAM & Admin" > "Service Accounts".
-4. Click "Create Service Account".
-5. Provide a name and description for the service account.
-
-See dox [here](https://docs.cloud.google.com/iam/docs/service-accounts-create#:~:text=projectIamAdminrole.-,Create%20a%20service%20account,Console%20More).
 
 ## Step 1: Gitlab
 
@@ -98,6 +42,15 @@ test:
     # Clone the correct Flutter version
     - git clone https://github.com/flutter/flutter.git --branch $FLUTTER_VERSION --depth 1
     - export PATH="$PWD/flutter/bin:$PATH"
+
+    # Install Node.js for OpenAPI generator
+    - apt-get update && apt-get install -y curl
+    - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+    - apt-get install -y nodejs
+    - npm install -g @openapitools/openapi-generator-cli
+    
+    # Generate API and get dependencies
+    - dart run tool/generate_api.dart
 
     # Verify the new Flutter & Dart
     - flutter --version
@@ -139,6 +92,15 @@ androidBuild:
     - git clone https://github.com/flutter/flutter.git --branch $FLUTTER_VERSION --depth 1
     - export PATH="$PWD/flutter/bin:$PATH"
 
+    # Install Node.js for OpenAPI generator
+    - apt-get update && apt-get install -y curl
+    - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+    - apt-get install -y nodejs
+    - npm install -g @openapitools/openapi-generator-cli
+    
+    # Generate API and get dependencies
+    - dart run tool/generate_api.dart
+
     # Ensure dependencies are installed
     - flutter clean && flutter build appbundle --release
 
@@ -168,12 +130,70 @@ androidDeploy:
 
 ```
 
-## Testing the Pipeline
+## Step 2: Automated Testing
 
-1. Push a new branch named `release/v1.0.0` to trigger the pipeline.
-2. Monitor the pipeline in Gitlab CI/CD (Remember to change the version number accordingly).
-![Fastlane Setup Guide](/blog/gitlab-pipline.png "Gitlab pipeline console")
+Set up comprehensive testing:
 
+```dart
+// test/widget_test.dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:your_app/main.dart';
+
+void main() {
+  testWidgets('App loads successfully', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    expect(find.text('Welcome'), findsOneWidget);
+  });
+}
+```
+
+## Step 3: Code Quality Checks
+
+Add linting and analysis:
+
+```yaml
+- name: Analyze code
+  run: flutter analyze
+
+- name: Check formatting
+  run: flutter format --set-exit-if-changed .
+```
+
+## Step 4: Build & Deploy
+
+For Android (Google Play):
+
+```yaml
+- name: Build Android App Bundle
+  run: flutter build appbundle --release
+
+- name: Deploy to Play Store
+  uses: r0adkll/upload-google-play@v1
+  with:
+    serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+    packageName: com.yourcompany.app
+    releaseFiles: build/app/outputs/bundle/release/app-release.aab
+    track: production
+```
+
+For iOS (App Store):
+
+```yaml
+- name: Build iOS
+  run: |
+    cd ios
+    pod install
+    cd ..
+    flutter build ios --release --no-codesign
+
+- name: Deploy to TestFlight
+  uses: apple-actions/upload-testflight-build@v1
+  with:
+    app-path: build/ios/ipa/app.ipa
+    issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+    api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+    api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+```
 
 ## Best Practices
 

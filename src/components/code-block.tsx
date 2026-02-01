@@ -14,15 +14,8 @@ interface CodeBlockProps {
 export const CodeBlock = ({ code, language, filename }: CodeBlockProps) => {
   const [html, setHtml] = useState<string>("");
   const [copied, setCopied] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-    
     const highlightCode = async () => {
       try {
         const highlighted = await codeToHtml(code, {
@@ -41,7 +34,7 @@ export const CodeBlock = ({ code, language, filename }: CodeBlockProps) => {
     };
 
     highlightCode();
-  }, [code, language, isMounted]);
+  }, [code, language]);
 
   const handleCopy = async () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -51,8 +44,8 @@ export const CodeBlock = ({ code, language, filename }: CodeBlockProps) => {
     }
   };
 
-  // Don't render until mounted on client
-  if (!isMounted) {
+  // Show skeleton with code until syntax highlighting is ready
+  if (!html) {
     return (
       <div className="relative group my-6 rounded-lg overflow-hidden border border-border bg-[#0d1117]">
         <div className="flex items-center justify-between px-4 py-2 border-b border-border/50 bg-[#161b22]">
