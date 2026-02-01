@@ -14,8 +14,15 @@ interface CodeBlockProps {
 export const CodeBlock = ({ code, language, filename }: CodeBlockProps) => {
   const [html, setHtml] = useState<string>("");
   const [copied, setCopied] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     const highlightCode = async () => {
       try {
         const highlighted = await codeToHtml(code, {
@@ -34,13 +41,44 @@ export const CodeBlock = ({ code, language, filename }: CodeBlockProps) => {
     };
 
     highlightCode();
-  }, [code, language]);
+  }, [code, language, isMounted]);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
+
+  // Don't render until mounted on client
+  if (!isMounted) {
+    return (
+      <div className="relative group my-6 rounded-lg overflow-hidden border border-border bg-[#0d1117]">
+        <div className="flex items-center justify-between px-4 py-2 border-b border-border/50 bg-[#161b22]">
+          <div className="flex items-center gap-2">
+            {filename && (
+              <span className="text-xs text-muted-foreground font-mono">
+                {filename}
+              </span>
+            )}
+            {!filename && language && (
+              <span className="text-xs text-muted-foreground font-mono">
+                {language}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="overflow-x-auto">
+          <pre className="!bg-transparent !p-4 !m-0">
+            <code className="!bg-transparent text-sm font-mono text-muted-foreground">
+              {code}
+            </code>
+          </pre>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative group my-6 rounded-lg overflow-hidden border border-border bg-[#0d1117]">

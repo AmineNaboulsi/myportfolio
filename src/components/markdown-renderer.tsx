@@ -1,8 +1,23 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import { CodeBlock } from "./code-block";
+import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
+
+const CodeBlock = dynamic(() => import("./code-block").then(mod => ({ default: mod.CodeBlock })), {
+  ssr: false,
+  loading: () => (
+    <div className="relative group my-6 rounded-lg overflow-hidden border border-border bg-[#0d1117]">
+      <div className="overflow-x-auto">
+        <pre className="!bg-transparent !p-4 !m-0">
+          <code className="!bg-transparent text-sm font-mono text-muted-foreground">
+            Loading...
+          </code>
+        </pre>
+      </div>
+    </div>
+  ),
+});
 
 interface MarkdownRendererProps {
   content: string;
