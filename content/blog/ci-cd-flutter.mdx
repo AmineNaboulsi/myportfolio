@@ -1,0 +1,194 @@
+---
+title: "CI/CD Pipeline for Mobile Apps with Flutter to Google Play Store"
+description: "Learn how to set up a complete CI/CD pipeline for Flutter mobile applications using Gitlab, automated testing, and deployment to App Store and Play Store."
+date: 2026-01-15
+readTime: "15 min read"
+category: "DevOps"
+tags: ["Flutter", "CI/CD", "fastlane", "Mobile", "DevOps", "Automation"]
+image: "/blog/cicd-flutter.png"
+featured: true
+---
+
+# required Tools
+
+- Gitlab Account
+- Fastlane
+- Flutter Project
+- Google Play Developer Account
+- Google Cloud Service Account for Play Store
+
+![CI/CD Pipeline Architecture](/blog/cicd-pipeline-architecture.png "CI/CD Pipeline for Flutter Apps")
+
+# Setup Fastlane for Flutter
+
+First we need to install fastlane on our machine, This action required ruby to be installed on your machine.
+Well, I'm not going to cover how to install ruby on your machine, but you can find a guide [here](https://www.ruby-lang.org/en/documentation/installation/).
+The fastlane this the one that will be used to communicate with the Google Play Store Based on a service account.
+See dox [here](https://docs.fastlane.tools/getting-started/ios/setup/#installing-fastlane).
+
+![Fastlane Setup Guide](/blog/fastlane-setup.png "Fastlane Configuration")
+
+Edit your Fastlane configuration file `android/fastlane/Fastfile` to include the following lane for deploying to the Play Store:
+
+```ruby
+platform :android do
+  desc "Deploy to Google Play Internal Testing"
+  lane :playstore_internal_release do
+    upload_to_play_store(
+      track: 'internal',
+      release_status: 'completed',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: 'service-account.json',
+      package_name: 'com.example.appname',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Deploy to Google Play Closed Testing"
+  lane :playstore_closed_test_release do
+    upload_to_play_store(
+      track: 'alpha',
+      release_status: 'completed',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: 'service-account.json',
+      package_name: 'com.example.appname',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  lane :tests do
+    gradle(task: "test")
+  end
+
+end
+```
+
+## Account service from Google cloud
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project or select an existing one.
+3. Navigate to "IAM & Admin" > "Service Accounts".
+4. Click "Create Service Account".
+5. Provide a name and description for the service account.
+
+See dox [here](https://docs.cloud.google.com/iam/docs/service-accounts-create#:~:text=projectIamAdminrole.-,Create%20a%20service%20account,Console%20More).
+
+## Step 1: Gitlab
+
+Create `.gitlab-ci.yml`:
+
+```yaml
+stages:
+  - test
+  - androidBuild
+  - androidDeploy
+
+variables:
+  FLUTTER_VERSION: "3.35.4"
+
+image: ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
+
+test:
+  stage: test
+  script:
+    # Show current Flutter & Dart version
+    - flutter --version
+    - dart --version
+
+    # Clone the correct Flutter version
+    - git clone https://github.com/flutter/flutter.git --branch $FLUTTER_VERSION --depth 1
+    - export PATH="$PWD/flutter/bin:$PATH"
+
+    # Verify the new Flutter & Dart
+    - flutter --version
+    - dart --version
+
+    # Install dependencies and run tests
+    - flutter pub get
+    - flutter test
+  only:
+    - /^release\/.*$/
+
+
+androidBuild:
+  stage: androidBuild
+  before_script:
+  # Decode the Base64 keystore to binary .jks file
+  - echo $KEYSTORE_FILE
+
+  - echo $KEYSTORE_FILE | base64 -d > android/app/key.jks
+  
+  # Verify the keystore file was created successfully
+  - ls -lh android/app/key.jks
+  # Create key.properties for Gradle
+  - |
+    cat > android/key.properties <<EOL
+    storeFile=key.jks
+    storePassword=$KEYSTORE_PASSWORD
+    keyAlias=upload
+    keyPassword=$KEY_PASSWORD
+    EOL
+  - cat android/key.properties
+
+  script:
+    # Show current Flutter & Dart version
+    - flutter --version
+    - dart --version
+
+    # Clone the correct Flutter version
+    - git clone https://github.com/flutter/flutter.git --branch $FLUTTER_VERSION --depth 1
+    - export PATH="$PWD/flutter/bin:$PATH"
+
+    # Ensure dependencies are installed
+    - flutter clean && flutter build appbundle --release
+
+
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build/app/outputs/bundle/release/app-release.aab
+  only:
+    - /^release\/.*$/
+
+
+androidDeploy:
+  stage: androidDeploy
+  dependencies:
+    - androidBuild
+  image: ruby:3.1
+  before_script:
+    # Install bundler and dependencies
+    - gem install bundler
+    - cd android && bundle install
+    - echo $SERVICE_ACCOUNT | base64 -d > service-account.json
+  script:
+    - bundle exec fastlane playstore_closed_test_release
+  only:
+    - /^release\/.*$/
+
+```
+
+## Testing the Pipeline
+
+1. Push a new branch named `release/v1.0.0` to trigger the pipeline.
+2. Monitor the pipeline in Gitlab CI/CD (Remember to change the version number accordingly).
+![Fastlane Setup Guide](/blog/gitlab-pipline.png "Gitlab pipeline console")
+
+
+## Best Practices
+
+1. **Separate environments**: dev, staging, production
+2. **Automated versioning**: Use semantic versioning
+3. **Security**: Store secrets in GitHub Secrets
+4. **Notifications**: Add Slack/Discord webhooks
+5. **Rollback strategy**: Keep previous builds accessible
+
+## Conclusion
+
+With this CI/CD pipeline, every push triggers automated testing and deployment, saving hours of manual work and reducing errors.
+
+**Next Steps**: Integrate crash reporting (Firebase Crashlytics) and analytics into your pipeline.

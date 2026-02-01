@@ -1,20 +1,56 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, BookOpen } from "lucide-react";
 
-function calculateTimeElapsed(startDate: Date) {
-  const now = new Date();
-  const elapsed = now.getTime() - startDate.getTime();
+// Calculate duration between two dates in a human-readable format
+function calculateDuration(startDate: Date, endDate?: Date | 'Present'): string {
+  const end = endDate === 'Present' || !endDate ? new Date() : endDate;
+  const start = startDate;
   
-  const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
-  const months = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-  const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+  const totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
   
-  if (years > 0) {
-    return `${years} year${years > 1 ? 's' : ''} ago`;
+  if (years > 0 && months > 0) {
+    return `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}`;
+  } else if (years > 0) {
+    return `${years} year${years > 1 ? 's' : ''}`;
   } else if (months > 0) {
-    return `${months} month${months > 1 ? 's' : ''} ago`;
+    return `${months} month${months > 1 ? 's' : ''}`;
   } else {
-    return `${days} day${days > 1 ? 's' : ''} ago`;
+    return '< 1 month';
+  }
+}
+
+// Format date range with duration
+function formatDateRange(startDate: Date, endDate?: Date | 'Present'): string {
+  const start = startDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const end = endDate === 'Present' || !endDate 
+    ? 'Present' 
+    : endDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const duration = calculateDuration(startDate, endDate);
+  
+  return `${start} - ${end} · ${duration}`;
+}
+
+// Calculate total experience across all positions
+function calculateTotalExperience(positions: Array<{ startDate: Date; endDate?: Date | 'Present' }>): string {
+  let totalMonths = 0;
+  
+  positions.forEach(pos => {
+    const end = pos.endDate === 'Present' || !pos.endDate ? new Date() : pos.endDate;
+    const start = pos.startDate;
+    totalMonths += (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  });
+  
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  
+  if (years > 0 && months > 0) {
+    return `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}`;
+  } else if (years > 0) {
+    return `${years} year${years > 1 ? 's' : ''}`;
+  } else {
+    return `${months} month${months > 1 ? 's' : ''}`;
   }
 }
 
@@ -51,6 +87,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/blog", icon: BookOpen, label: "Blog" },
   ],
   contact: {
     email: "naboulsiiamine@gmail.com",
@@ -87,11 +124,17 @@ export const DATA = {
     location: "Casablanca Technopark",
     title: "Full-time",
     logoUrl: "/dashy.jpg",
-    start: "5 months",
+    start: (() => {
+      const positions = [
+        { startDate: new Date('2025-09-01'), endDate: 'Present' as const },
+        { startDate: new Date('2025-06-01'), endDate: new Date('2025-09-01') }
+      ];
+      return calculateTotalExperience(positions);
+    })(),
     positions: [
       {
         title: "Full-stack Developer",
-        period: "Sept. 2025 - Present · 2 months",
+        period: formatDateRange(new Date('2025-09-01'), 'Present'),
         location: "Casablanca-Settat, Morocco",
         skills: ["Devops", "Azure Cloud", "Java", "Spring Boot", "Angular", "Microservices", "Docker", "Kubernetes", "CI/CD pipelines"],
         images: ["/dashypay_cover.jpg"],
@@ -99,7 +142,7 @@ export const DATA = {
       },
       {
         title: "Web Development Intern",
-        period: "June 2025 - Sept. 2025 · 4 months",
+        period: formatDateRange(new Date('2025-06-01'), new Date('2025-09-01')),
         location: "Casablanca-Settat, Morocco",
         skills: ["Java", "Spring Boot", "Microservices", "Angular"],
         images: ["/blackpinksongs.png"]
@@ -113,7 +156,7 @@ export const DATA = {
       location: "Casablanca Technopark",
       title: "Internship",
       logoUrl: "/mediot_img.jpg",
-      start: "3 months",
+      start: calculateDuration(new Date('2024-02-01'), new Date('2024-05-01')),
       positions: [],
       description: "My internship at ABA Technology focused on developing an intelligent classification system for skin cancer images using advanced artificial intelligence techniques. Through training convolutional neural networks (CNN) on an annotated dermatological dataset, I designed a model capable of identifying different types of skin lesions with optimized accuracy using the Adam algorithm and image preprocessing techniques. Additionally, I developed a user interface with Gradio for intuitive model usage and integrated a Discord bot enabling interactive image prediction. My work improved diagnostic accuracy and opens up perspectives for better assistance to healthcare professionals, particularly by exploring other types of skin lesions and integrating interpretability techniques for better understanding of the model's decisions.",
       detailsUrl: "https://github.com/yourusername/mediot-project"
@@ -125,7 +168,7 @@ export const DATA = {
       location: "Casanearshore",
       title: "Internship",
       logoUrl: "https://www.capgemini.com/us-en/wp-content/themes/capgemini2020/assets/images/logo.svg",
-      start: "2 months",
+      start: calculateDuration(new Date('2023-11-01'), new Date('2024-01-01')),
       description: "During my internship at Capgemini, I worked on developing an intelligent application capable of classifying product images in a supermarket using deep learning. The objective was to design a high-performance model based on convolutional neural networks (CNN) to automatically identify and categorize items placed in shopping carts or on shelves. To achieve this, I collected and preprocessed a large set of product images, optimized model training by adjusting hyperparameters, and integrated computer vision techniques to improve recognition accuracy. The application, deployed on mobile, allows users to scan products in real-time and instantly obtain their classification, providing an effective solution for inventory automation and intelligent stock management in retail.",
     }
   ],
@@ -343,7 +386,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://aminenaboulsi.github.io/Bref2/",
+          href: "https://aminenaboulsi.github.io/caffe",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -511,4 +554,5 @@ export const DATA = {
       links: [],
     }
   ],
+  blog: [] as any[],
 } as const;
