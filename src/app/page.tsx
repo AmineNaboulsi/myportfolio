@@ -190,6 +190,8 @@ export default function Page() {
                   tags={project.technologies}
                   image={project.image}
                   video={project.video}
+                  images={"images" in project ? project.images : undefined}
+                  logo={"logo" in project ? project.logo : undefined}
                   links={project.links}
                 />
               </BlurFade>
