@@ -250,7 +250,7 @@ export const DATA = {
         // },
       ],
       video:
-        "/youlearn/YouLearn.mp4",
+        "/youlearn/YouLearn.gif",
     },
      {
       title: "RepasSuivi",
@@ -446,7 +446,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/SnackApp/logo.png",
+      logo : "",
       video:
         "/snackapp.mp4",
     },
