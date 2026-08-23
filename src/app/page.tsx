@@ -6,10 +6,18 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
-import { SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiKubernetes,
+  SiTerraform,
+  SiGithubactions,
+  SiDotnet,
+  SiNginx,
+} from 'react-icons/si';
 import { FaJava, FaAngular, FaDocker } from 'react-icons/fa';
 import { VscAzureDevops } from 'react-icons/vsc';
-import { TbBrandCSharp } from 'react-icons/tb';
 import { LogoLoop } from "@/components/rb/LogoLoop/LogoLoop";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -21,8 +29,12 @@ const techLogos = [
   { node: <FaJava />, title: "Java", href: "https://www.java.com" },
   { node: <FaAngular />, title: "Angular", href: "https://angular.io" },
   { node: <VscAzureDevops />, title: "Azure DevOps", href: "https://dev.azure.com" },
-  { node: <TbBrandCSharp />, title: "C#", href: "https://learn.microsoft.com/dotnet/csharp/" },
   { node: <FaDocker />, title: "Docker", href: "https://www.docker.com" },
+  { node: <SiKubernetes />, title: "Kubernetes", href: "https://kubernetes.io" },
+  { node: <SiTerraform />, title: "Terraform", href: "https://developer.hashicorp.com/terraform" },
+  { node: <SiGithubactions />, title: "GitHub Actions", href: "https://github.com/features/actions" },
+  { node: <SiDotnet />, title: "ASP.NET", href: "https://dotnet.microsoft.com/apps/aspnet" },
+  { node: <SiNginx />, title: "Nginx", href: "https://nginx.org" },
 ];
 
 // Alternative with image sources
@@ -188,7 +200,7 @@ export default function Page() {
                   description={project.description}
                   dates={project.dates}
                   tags={project.technologies}
-                  image={project.image}
+                  image={"image" in project ? project.image : undefined}
                   video={project.video}
                   images={"images" in project ? project.images : undefined}
                   logo={"logo" in project ? project.logo : undefined}

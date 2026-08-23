@@ -241,17 +241,16 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      logo: "/youlearn/logo.svg",
-      image: "/youlearn.png",
+      logo: "/youlearn/logo-mark.png",
       images: [
-        {
-          src: "/youlearn/upload-lifecycle.svg",
-          caption:
-            "What happens to an infected upload, hop by hop — and what each one records.",
-        },
+        // {
+        //   src: "/youlearn/upload-lifecycle.svg",
+        //   caption:
+        //     "What happens to an infected upload, hop by hop — and what each one records.",
+        // },
       ],
       video:
-        "",
+        "/youlearn/YouLearn.mp4",
     },
      {
       title: "RepasSuivi",
@@ -325,6 +324,7 @@ export const DATA = {
         "Php",
         "Mysql",
       ],
+      logo: "/blackpink/logo.png",
       links: [
         {
           type: "Source",
@@ -332,7 +332,19 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/blackpinksongs.png",
+      image: "/blackpink/blackpinksongs.png",
+      images: [
+        {
+          src: "/blackpink/blackpink-inter2.jpeg",
+          caption:
+            "A music application dedicated to Black Pink songs, featuring streaming capabilities and playlist management.",
+        },
+        {
+          src: "/blackpink/blackpink-inter1.jpg",
+          caption:
+            "A music application dedicated to Black Pink songs, featuring streaming capabilities and playlist management.",
+        },
+      ],
       video:
         "",
     },
