@@ -250,7 +250,7 @@ export const DATA = {
         // },
       ],
       video:
-        "/youlearn/YouLearn.gif",
+        "/youlearn/YouLearn.mp4",
     },
      {
       title: "RepasSuivi",
