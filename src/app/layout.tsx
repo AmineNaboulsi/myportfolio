@@ -52,15 +52,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
-        )}
-      >
+      {/* The centred column is a child of <body>, not <body> itself.
+          
+          It used to be the body: `max-w-2xl mx-auto px-6` straight on the
+          element. Radix's dialog locks scrolling through react-remove-scroll,
+          which compensates for the scrollbar it removes by writing
+          padding-right and margin-right onto <body> — measuring the gap as
+          viewport width minus body width. That is the scrollbar's width when
+          body fills the viewport, and 345px when body is a 672px column in a
+          1400px window. It also zeroes the margins, which is what centred it.
+          Every dialog therefore collapsed the page behind it to nothing.
+          
+          With the column one level in, body is full width, the measurement is
+          right, and the layout underneath does not move. */}
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            {children}
+            <div className="mx-auto max-w-2xl px-6 py-12 sm:py-24">
+              {children}
+            </div>
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>

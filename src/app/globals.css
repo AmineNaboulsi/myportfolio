@@ -13,6 +13,20 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* ...so the scroll lock has nothing to compensate for.
+
+   Radix locks scrolling through react-remove-scroll, which removes the page's
+   scrollbar and adds a right margin of the same width so nothing reflows. With
+   the gutter reserved above, the scrollbar never goes away, so that margin is
+   pure shift: every centred thing on the page slides left by half of it the
+   moment a dialog opens. Refuse it. */
+html body[data-scroll-locked] {
+  /* `html body[…]` rather than `body[…]`: react-remove-scroll injects its rule
+     from a <style> tag at runtime, so it comes later in the cascade and wins a
+     tie. Out-specify it. */
+  margin-right: 0 !important;
+}
+
 @layer base {
     :root {
       --background: 0 0% 100%;
