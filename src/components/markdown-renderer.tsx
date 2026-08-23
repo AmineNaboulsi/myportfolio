@@ -30,16 +30,16 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
       className={cn(
         "prose prose-sm sm:prose lg:prose-lg dark:prose-invert max-w-none",
         "prose-headings:font-bold prose-headings:tracking-tight",
-        "prose-h1:text-4xl prose-h1:mb-4",
-        "prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:text-[#BFE241]",
-        "prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3",
-        "prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4",
-        "prose-a:text-[#BFE241] prose-a:no-underline hover:prose-a:underline",
-        "prose-strong:text-foreground prose-strong:font-semibold",
-        "prose-blockquote:border-l-4 prose-blockquote:border-[#BFE241] prose-blockquote:pl-4 prose-blockquote:italic",
+        "prose-h1:text-4xl prose-h1:mb-4 prose-h1:text-ink",
+        "prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-ink",
+        "prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-ink",
+        "prose-p:text-ink-muted prose-p:leading-relaxed prose-p:mb-4",
+        "prose-a:text-ink prose-a:underline prose-a:decoration-ink-ghost prose-a:underline-offset-4 hover:prose-a:decoration-ink",
+        "prose-strong:text-ink prose-strong:font-semibold",
+        "prose-blockquote:border-l-2 prose-blockquote:border-line-strong prose-blockquote:pl-4 prose-blockquote:not-italic prose-blockquote:text-ink-soft",
         "prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4",
         "prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4",
-        "prose-li:text-muted-foreground prose-li:mb-2",
+        "prose-li:text-ink-muted prose-li:mb-2 prose-li:marker:text-ink-ghost",
         className
       )}
       components={{
@@ -54,7 +54,7 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
 
           return (
             <code
-              className="text-[#BFE241] bg-muted px-1.5 py-0.5 rounded text-sm font-mono before:content-[''] after:content-['']"
+              className="rounded border border-line bg-surface-sunk px-1.5 py-0.5 font-mono text-[0.85em] text-ink before:content-[''] after:content-['']"
               {...props}
             >
               {children}
@@ -66,21 +66,21 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
         },
         h1({ children }) {
           return (
-            <h1 className="text-4xl font-bold tracking-tight mb-4">
+            <h1 className="mb-4 text-4xl font-bold tracking-tighter text-ink">
               {children}
             </h1>
           );
         },
         h2({ children }) {
           return (
-            <h2 className="text-3xl font-bold tracking-tight mt-8 mb-4 text-[#BFE241]">
+            <h2 className="mb-4 mt-10 border-b border-line pb-2 text-2xl font-bold tracking-tight text-ink">
               {children}
             </h2>
           );
         },
         h3({ children }) {
           return (
-            <h3 className="text-2xl font-bold tracking-tight mt-6 mb-3">
+            <h3 className="mb-3 mt-6 text-xl font-semibold tracking-tight text-ink">
               {children}
             </h3>
           );
@@ -89,7 +89,7 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
           return (
             <a
               href={href}
-              className="text-[#BFE241] no-underline hover:underline"
+              className="text-ink underline decoration-ink-ghost underline-offset-4 transition-colors hover:decoration-ink"
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
@@ -99,7 +99,7 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
         },
         blockquote({ children }) {
           return (
-            <blockquote className="border-l-4 border-[#BFE241] pl-4 italic my-4 text-muted-foreground">
+            <blockquote className="my-5 border-l-2 border-line-strong pl-4 text-ink-soft">
               {children}
             </blockquote>
           );
