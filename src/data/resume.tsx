@@ -207,6 +207,52 @@ export const DATA = {
     },
   ],
   projects: [
+    {
+      title: "YouLearn",
+      href: "https://learn.naboulsiamine.com",
+      dates: "(ongoing)",
+      active: true,
+      description:
+        "A course platform running in production on Oracle Cloud: server-rendered Next.js, a PHP resource-server API, and Keycloak as the identity provider, so no access token ever reaches the browser. Lecture videos upload in resumable 5 MiB chunks, are typed by content rather than by filename, and are scanned by ClamAV before they are stored — a refused upload never exists under a servable path. Deploys are pull-based: the instance reconciles itself from git and a registry on a timer, with nothing reaching in over SSH.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "PHP 8.3",
+        "MySQL",
+        "Keycloak",
+        "OAuth2 / OIDC",
+        "Docker Compose",
+        "Caddy",
+        "ClamAV",
+        "Terraform",
+        "Oracle Cloud",
+        "GitHub Actions",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://learn.naboulsiamine.com",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AmineNaboulsi/youlearn",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      logo: "/youlearn/logo.svg",
+      image: "/youlearn.png",
+      images: [
+        {
+          src: "/youlearn/upload-lifecycle.svg",
+          caption:
+            "What happens to an infected upload, hop by hop — and what each one records.",
+        },
+      ],
+      video:
+        "",
+    },
      {
       title: "RepasSuivi",
       href: "https://repas-suivi.vercel.app/",
@@ -241,37 +287,6 @@ export const DATA = {
         },
       ],
       image: "/repasSuivi.png",
-      video:
-        "",
-    },
-    {
-      title: "You Learn",
-      href: "https://youlearn-seven.vercel.app",
-      dates: "(1 week)",
-      active: true,
-      description:
-        "An online course platform designed to offer an interactive and personalized learning experience. The main objective is to facilitate access to knowledge while ensuring efficient management of educational content.",
-      technologies: [
-        "React Js",
-        "Typescript",
-        "MySQL",
-        "TailwindCSS",
-        "Php",
-        "Swagger",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://youlearn-seven.vercel.app",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/AmineNaboulsi/youlearn",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/youlearn.png",
       video:
         "",
     },
