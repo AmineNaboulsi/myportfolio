@@ -1,11 +1,20 @@
-"use client";
-
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
+
+/**
+ * One post, as a row.
+ *
+ * Borrowed from YouLearn's curriculum list, and for the same reason: a page of
+ * floating cards with shadows and lift-on-hover reads as decoration, while a
+ * list of hairline-separated rows reads as a table of contents — which is what
+ * a blog index is. The row draws no border of its own; the list draws them
+ * between rows, so a run of posts is one object rather than several.
+ *
+ * There is no accent colour. Hierarchy comes from weight and size: the title
+ * is the only semibold thing in the row, the summary is muted, and the meta
+ * line is smaller and fainter still.
+ */
 interface BlogCardProps {
   id: string;
   title: string;
@@ -21,7 +30,6 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({
-  id,
   title,
   slug,
   description,
@@ -29,86 +37,65 @@ export const BlogCard = ({
   readTime,
   category,
   tags,
-  image,
   featured,
   className,
 }: BlogCardProps) => {
-  const formattedDate = date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric' 
+  const value = date instanceof Date ? date : new Date(date);
+  const formattedDate = value.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 
   return (
-    <Link href={`/blog/${slug}`}>
-      <Card className={cn(
-        "group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
-        featured && "border-[#BFE241]/50 bg-gradient-to-br from-[#BFE241]/5 to-transparent",
-        className
-      )}>
-        {image && (
-          <div className="relative h-48 w-full overflow-hidden rounded-t-lg bg-muted">
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
-            {/* Placeholder for image - you can add actual image here */}
-            <div className="w-full h-full bg-gradient-to-br from-[#BFE241]/20 to-primary/20 flex items-center justify-center">
-              <span className="text-4xl font-bold text-muted-foreground/20">{category}</span>
-            </div>
-            {featured && (
-              <Badge className="absolute top-3 right-3 z-20 bg-[#BFE241] text-background border-0">
-                Featured
-              </Badge>
-            )}
-          </div>
-        )}
-        
-        <CardHeader className="pb-3">
-          <div className="flex items-center gap-2 mb-2">
-            <Badge variant="secondary" className="text-xs">
-              {category}
-            </Badge>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Calendar className="size-3" />
-              <span>{formattedDate}</span>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="size-3" />
-              <span>{readTime}</span>
-            </div>
-          </div>
-          
-          <h3 className="text-xl font-bold leading-tight group-hover:text-[#BFE241] transition-colors">
-            {title}
-          </h3>
-        </CardHeader>
-        
-        <CardContent>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            {description}
-          </p>
-          
-          <div className="flex flex-wrap gap-2 mb-4">
-            {tags.slice(0, 4).map((tag, index) => (
-              <Badge 
-                key={index} 
-                variant="outline" 
-                className="text-xs hover:border-[#BFE241] hover:text-[#BFE241] transition-colors"
-              >
-                {tag}
-              </Badge>
-            ))}
-            {tags.length > 4 && (
-              <Badge variant="outline" className="text-xs">
-                +{tags.length - 4}
-              </Badge>
-            )}
-          </div>
-          
-          <div className="flex items-center gap-2 text-sm font-medium text-[#BFE241] group-hover:gap-3 transition-all">
-            Read more
-            <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
-          </div>
-        </CardContent>
-      </Card>
+    <Link
+      href={`/blog/${slug}`}
+      className={cn(
+        "group block bg-surface px-5 py-4 transition-colors hover:bg-surface-sunk",
+        className,
+      )}
+    >
+      <div className="flex items-baseline justify-between gap-4">
+        <h3 className="text-[15px] font-semibold leading-snug text-ink decoration-ink-ghost underline-offset-4 group-hover:underline">
+          {title}
+        </h3>
+        {/* Tabular figures so a column of dates lines up down the list. */}
+        <time
+          dateTime={value.toISOString()}
+          className="flex-none text-[11px] tabular-nums text-ink-faint"
+        >
+          {formattedDate}
+        </time>
+      </div>
+
+      <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-ink-muted">
+        {description}
+      </p>
+
+      <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-[11px] text-ink-faint">
+        <span className="font-medium uppercase tracking-[0.14em] text-ink-soft">
+          {category}
+        </span>
+        <span aria-hidden>·</span>
+        <span className="tabular-nums">{readTime}</span>
+
+        {featured ? (
+          <span className="rounded border border-line-strong px-1.5 py-0.5 font-medium uppercase tracking-[0.12em] text-ink-soft">
+            Featured
+          </span>
+        ) : null}
+
+        {/* Three, then a count. A row that wraps to a second line of tags is a
+            row that has stopped being scannable. */}
+        {tags.slice(0, 3).map((tag) => (
+          <span key={tag} className="rounded border border-line px-1.5 py-0.5">
+            {tag}
+          </span>
+        ))}
+        {tags.length > 3 ? (
+          <span className="text-ink-faint">+{tags.length - 3}</span>
+        ) : null}
+      </div>
     </Link>
   );
 };

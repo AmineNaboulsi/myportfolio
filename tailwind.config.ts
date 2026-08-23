@@ -56,8 +56,27 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
+        // YouLearn's scale, for the blog. Named the same as in that codebase so
+        // a component can be moved between the two without a rename.
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+          muted: "hsl(var(--ink-muted))",
+          faint: "hsl(var(--ink-faint))",
+          ghost: "hsl(var(--ink-ghost))",
+        },
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          sunk: "hsl(var(--surface-sunk))",
+        },
+        line: {
+          DEFAULT: "hsl(var(--line))",
+          strong: "hsl(var(--line-strong))",
+        },
       },
       borderRadius: {
+        card: "0.875rem",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
