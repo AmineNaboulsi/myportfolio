@@ -446,7 +446,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/SnackApp/logo.png",
+      logo : "",
       video:
         "/snackapp.mp4",
     },
