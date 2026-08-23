@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* The scrollbar gutter is reserved at all times.
+
+   Radix locks body scroll while a dialog is open, which removes the page's
+   scrollbar. Everything centred underneath then re-centres by the scrollbar's
+   width and the fixed dock jumps — the whole page appears to break at the
+   moment the popup arrives. Reserving the gutter means removing the scrollbar
+   changes nothing. */
+html {
+  scrollbar-gutter: stable;
+}
+
 @layer base {
     :root {
       --background: 0 0% 100%;
